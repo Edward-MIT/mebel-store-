@@ -1,8 +1,32 @@
 {
   "$schema": "https://json.schemastore.org/nest-cli",
   "collection": "@nestjs/schematics",
-  "sourceRoot": "src",
+  "sourceRoot": "apps/mebel-store/src",
   "compilerOptions": {
-    "deleteOutDir": true
+    "deleteOutDir": true,
+    "webpack": true,
+    "tsConfigPath": "apps/mebel-store/tsconfig.app.json"
+  },
+  "monorepo": true,
+  "root": "apps/mebel-store",
+  "projects": {
+    "batch-server": {
+      "type": "application",
+      "root": "apps/batch-server",
+      "entryFile": "main",
+      "sourceRoot": "apps/batch-server/src",
+      "compilerOptions": {
+        "tsConfigPath": "apps/batch-server/tsconfig.app.json"
+      }
+    },
+    "mebel-store": {
+      "type": "application",
+      "root": "apps/mebel-store",
+      "entryFile": "main",
+      "sourceRoot": "apps/mebel-store/src",
+      "compilerOptions": {
+        "tsConfigPath": "apps/mebel-store/tsconfig.app.json"
+      }
+    }
   }
 }
